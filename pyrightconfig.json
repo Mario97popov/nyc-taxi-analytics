@@ -1,0 +1,6 @@
+{
+  "reportAttributeAccessIssue": "none",
+  "reportMissingImports": "warning",
+  "venvPath": ".",
+  "venv": ".venv"
+}

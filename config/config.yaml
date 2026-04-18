@@ -1,0 +1,34 @@
+# Spark settings
+spark:
+  app_name: "NYC Taxi Analytics"
+  master: "local[*]"
+  driver_memory: "4g"
+  shuffle_partitions: 8
+  log_level: "WARN"
+
+# Paths
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  output_data: "data/output"
+  logs: "logs"
+
+# Data for download
+data_source:
+  base_url: "https://d37ci6vzurychx.cloudfront.net/trip-data"
+  # Which months to download (YYYY-MM)
+  months:
+    - "2024-01"
+  # Type of taxy: we are focusing on yellow
+  taxi_type: "yellow"
+
+# Data quality rules
+quality_rules:
+  min_trip_distance: 0.1      # miles
+  max_trip_distance: 100.0    # miles
+  min_fare_amount: 0.0        # $
+  max_fare_amount: 500.0      # $
+  min_passenger_count: 1
+  max_passenger_count: 8
+  min_trip_duration_minutes: 1
+  max_trip_duration_minutes: 180
