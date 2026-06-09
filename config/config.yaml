@@ -11,24 +11,47 @@ paths:
   raw_data: "data/raw"
   processed_data: "data/processed"
   output_data: "data/output"
+  reports: "data/reports"
   logs: "logs"
 
 # Data for download
 data_source:
   base_url: "https://d37ci6vzurychx.cloudfront.net/trip-data"
-  # Which months to download (YYYY-MM)
   months:
     - "2024-01"
-  # Type of taxy: we are focusing on yellow
   taxi_type: "yellow"
+
+# perios in the data for validating dates
+expected_period:
+  year: 2024
+  months: [1] 
 
 # Data quality rules
 quality_rules:
-  min_trip_distance: 0.1      # miles
-  max_trip_distance: 100.0    # miles
-  min_fare_amount: 0.0        # $
-  max_fare_amount: 500.0      # $
-  min_passenger_count: 1
-  max_passenger_count: 8
+   # Trip distance (miles)
+  min_trip_distance: 0.1
+  max_trip_distance: 100.0
+
+  # Trip duration (minutes)
   min_trip_duration_minutes: 1
   max_trip_duration_minutes: 180
+
+  # Prices ($)
+  min_fare_amount: 0.0
+  max_fare_amount: 500.0
+  max_total_amount: 600.0
+  min_total_amount: 0.0
+
+  # Passengers
+  min_passenger_count: 1
+  max_passenger_count: 8
+
+  # Valid ID's by zone (from 1 to 265 by TLC)
+  min_location_id: 1
+  max_location_id: 265
+
+  # Valid payment types
+  valid_payment_types: [1, 2, 3, 4, 5, 6]
+
+  # Valid rate codes
+  valid_rate_codes: [1, 2, 3, 4, 5, 6, 99]

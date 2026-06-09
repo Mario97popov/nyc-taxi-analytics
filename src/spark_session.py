@@ -65,3 +65,5 @@ KryoSerializer  - 10 X times faster than the Java serializer
 datetimeRebaseModeInRead - fixes problems with timestamps in Parqet files
 if __name__ == "__main__": - code that executes only if we start the file directly and not when we import it
 """
+
+
