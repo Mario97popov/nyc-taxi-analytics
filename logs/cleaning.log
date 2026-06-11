@@ -1,0 +1,28 @@
+2026-06-11 15:29:44,231 - __main__ - INFO - Starting cleaning pipeline
+2026-06-11 15:30:00,084 - src.loader - INFO - Found 1 file(s) to load:
+2026-06-11 15:30:00,084 - src.loader - INFO -   - yellow_tripdata_2024-01.parquet (47.6 MB)
+2026-06-11 15:30:04,978 - src.cleaner - INFO - ============================================================
+2026-06-11 15:30:04,978 - src.cleaner - INFO - Starting data cleaning
+2026-06-11 15:30:04,978 - src.cleaner - INFO - ============================================================
+2026-06-11 15:30:15,288 - src.cleaner - INFO - Initial row count: 2,964,624
+2026-06-11 15:30:15,289 - src.cleaner - INFO - 
+2026-06-11 15:30:15,894 - src.cleaner - INFO -   [remove_nulls] removed 140,162 rows (4.73%) -> 2,824,462 remaining
+2026-06-11 15:30:19,490 - src.cleaner - INFO -   [remove_duplicates] removed 0 rows (0.00%) -> 2,824,462 remaining
+2026-06-11 15:30:22,897 - src.cleaner - INFO -   [remove_invalid_dates] removed 8,186 rows (0.29%) -> 2,816,276 remaining
+2026-06-11 15:30:26,586 - src.cleaner - INFO -   [remove_invalid_distance] removed 46,607 rows (1.65%) -> 2,769,669 remaining
+2026-06-11 15:30:29,504 - src.cleaner - INFO -   [remove_invalid_amounts] removed 29,715 rows (1.07%) -> 2,739,954 remaining
+2026-06-11 15:30:32,345 - src.cleaner - INFO -   [remove_invalid_passengers] removed 30,604 rows (1.12%) -> 2,709,350 remaining
+2026-06-11 15:30:35,178 - src.cleaner - INFO -   [remove_invalid_duration] removed 5,198 rows (0.19%) -> 2,704,152 remaining
+2026-06-11 15:30:38,318 - src.cleaner - INFO -   [remove_invalid_locations] removed 0 rows (0.00%) -> 2,704,152 remaining
+2026-06-11 15:30:41,544 - src.cleaner - INFO -   [remove_invalid_categories] removed 0 rows (0.00%) -> 2,704,152 remaining
+2026-06-11 15:30:41,545 - src.cleaner - INFO - 
+2026-06-11 15:30:41,545 - src.cleaner - INFO - ============================================================
+2026-06-11 15:30:41,545 - src.cleaner - INFO - Cleaning summary:
+2026-06-11 15:30:41,545 - src.cleaner - INFO -   Initial:  2,964,624
+2026-06-11 15:30:41,545 - src.cleaner - INFO -   Removed:  260,472 (8.79%)
+2026-06-11 15:30:41,546 - src.cleaner - INFO -   Final:    2,704,152 (91.21% kept)
+2026-06-11 15:30:41,546 - src.cleaner - INFO - ============================================================
+2026-06-11 15:30:41,556 - src.cleaner - INFO - Writing cleaned data to: data/processed/yellow_taxi_clean
+2026-06-11 15:30:47,964 - src.cleaner - INFO - Write complete
+2026-06-11 15:30:47,964 - __main__ - INFO - Cleaned data saved to: data/processed/yellow_taxi_clean
+2026-06-11 15:30:48,427 - py4j.clientserver - INFO - Closing down clientserver connection
