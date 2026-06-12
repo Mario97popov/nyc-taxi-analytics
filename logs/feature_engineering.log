@@ -1,0 +1,26 @@
+2026-06-12 12:05:02,260 - __main__ - INFO - Starting feature engineering pipeline
+2026-06-12 12:05:27,632 - src.loader - INFO - Loading data from: data/processed/yellow_taxi_clean
+2026-06-12 12:05:34,620 - src.loader - INFO - Loaded with inferred schema
+2026-06-12 12:05:36,878 - __main__ - INFO - Loaded 2,704,152 rows, 19 columns
+2026-06-12 12:05:36,879 - src.transformations - INFO - Starting feature engineering
+2026-06-12 12:05:36,976 - src.transformations - INFO -   ✓ trip_duration_minutes
+2026-06-12 12:05:37,181 - src.transformations - INFO -   ✓ datetime features (year, month, day, hour, day_name)
+2026-06-12 12:05:37,221 - src.transformations - INFO -   ✓ is_weekend
+2026-06-12 12:05:37,275 - src.transformations - INFO -   ✓ time_of_day
+2026-06-12 12:05:37,311 - src.transformations - INFO -   ✓ is_rush_hour
+2026-06-12 12:05:37,377 - src.transformations - INFO -   ✓ speed_mph
+2026-06-12 12:05:37,412 - src.transformations - INFO -   ✓ tip_percentage
+2026-06-12 12:05:37,449 - src.transformations - INFO -   ✓ trip_length_category
+2026-06-12 12:05:37,482 - src.transformations - INFO -   ✓ payment_type_name
+2026-06-12 12:05:37,524 - src.transformations - INFO -   ✓ rate_code_name
+2026-06-12 12:05:37,546 - src.transformations - INFO -   ✓ vendor_name
+2026-06-12 12:05:37,613 - src.transformations - INFO -   ✓ airport flags
+2026-06-12 12:05:37,616 - src.transformations - INFO - Feature engineering complete. Total columns: 38
+2026-06-12 12:05:37,616 - __main__ - INFO - Writing to: data/processed/yellow_taxi_features
+2026-06-12 12:05:51,498 - __main__ - INFO - ============================================================
+2026-06-12 12:05:51,498 - __main__ - INFO - Feature engineering complete:
+2026-06-12 12:05:51,499 - __main__ - INFO -   Rows:    2,704,152 -> 2,704,152
+2026-06-12 12:05:51,499 - __main__ - INFO -   Columns: 19 -> 38
+2026-06-12 12:05:51,499 - __main__ - INFO -   New features: 19
+2026-06-12 12:05:51,499 - __main__ - INFO - ============================================================
+2026-06-12 12:05:51,985 - py4j.clientserver - INFO - Closing down clientserver connection
