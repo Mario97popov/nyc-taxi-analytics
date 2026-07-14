@@ -1,0 +1,8 @@
+pickup_day_of_week,pickup_day_name,trip_count,avg_fare,avg_distance,avg_tip_pct,total_revenue
+1,Sunday,330114,18.22,3.43,21.14,8856215.58
+2,Monday,367450,19.54,3.7,21.0,1.058332978E7
+3,Tuesday,417648,18.71,3.31,21.44,1.166052496E7
+4,Wednesday,450238,18.38,3.22,21.55,1.240077632E7
+5,Thursday,386427,18.52,3.23,21.45,1.072461155E7
+6,Friday,371975,18.22,3.25,21.35,1.017200125E7
+7,Saturday,380300,17.13,2.99,22.06,9593042.11

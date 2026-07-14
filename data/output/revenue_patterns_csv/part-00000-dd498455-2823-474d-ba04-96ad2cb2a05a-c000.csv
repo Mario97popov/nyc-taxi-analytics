@@ -1,0 +1,11 @@
+time_of_day,day_type,trip_count,total_revenue,avg_revenue_per_trip
+Afternoon,Weekday,560189,1.506706422E7,26.9
+Afternoon,Weekend,192021,4714651.0,24.55
+Evening,Weekday,690581,1.962800292E7,28.42
+Evening,Weekend,218845,5817231.36,26.58
+Late,Weekday,228467,6237382.04,27.3
+Late,Weekend,68066,1916897.56,28.16
+Morning,Weekday,305603,8174314.41,26.75
+Morning,Weekend,55580,1570641.69,28.26
+Night,Weekday,208898,6434480.27,30.8
+Night,Weekend,175902,4429836.08,25.18
