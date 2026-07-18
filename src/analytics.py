@@ -223,20 +223,24 @@ def analyze_traffic_by_hour(df: DataFrame) -> DataFrame:
     Speed as proxy for traffic
     Low speed = big traffic
     """
+    from pyspark.sql.functions import expr
+
     logger.info("Analyzing traffic patterns by hour...")
 
     return (df
-        .filter(col("trip_distance") > 0.5)  # filter the small courses
+        .filter(col("trip_distance") > 0.5)
+        .filter(col("speed_mph") > 0)
+        .filter(col("speed_mph") <= 80)
         .groupBy("pickup_hour")
         .agg(
             spark_round(avg("speed_mph"), 2).alias("avg_speed_mph"),
-            spark_round(spark_min("speed_mph"), 2).alias("min_speed_mph"),
-            spark_round(spark_max("speed_mph"), 2).alias("max_speed_mph"),
+            spark_round(expr("percentile_approx(speed_mph, 0.5)"), 2).alias("median_speed_mph"),
+            spark_round(expr("percentile_approx(speed_mph, 0.25)"), 2).alias("p25_speed_mph"),
+            spark_round(expr("percentile_approx(speed_mph, 0.75)"), 2).alias("p75_speed_mph"),
             count("*").alias("sample_size"),
         )
         .orderBy("pickup_hour")
     )
-
 
 # ============================================================
 # Section 9: Trip length distribution

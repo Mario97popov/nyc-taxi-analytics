@@ -215,6 +215,33 @@ def remove_invalid_categories(
 # Main Function - Starts all steps above
 # ============================================================
 
+def remove_unrealistic_speeds(
+    df: DataFrame,
+    before_count: int,
+    max_speed_mph: float = 80.0
+) -> Tuple[DataFrame, int]:
+    """
+    Removes courses with unrealistic speed.
+    
+    Wrong timestamps in taxy meters lead to absurd speed calculations (1000+ mph).
+
+    Note: this check is based on aggregated speed, this is why we do it after the other filters.
+    """
+    from pyspark.sql.functions import unix_timestamp
+
+    # aggregates speed inline (without adding column)
+    duration_hours = (
+        (unix_timestamp("tpep_dropoff_datetime") -
+         unix_timestamp("tpep_pickup_datetime")) / 3600
+    )
+
+    speed = col("trip_distance") / duration_hours
+
+    condition = (speed >= 0) & (speed <= max_speed_mph)
+
+    return apply_step(df, condition, "remove_unrealistic_speed", before_count)
+
+
 def clean_taxi_data(df: DataFrame, config: dict) -> DataFrame:
     """
     Starts all cleaning steps one by one
@@ -254,6 +281,7 @@ def clean_taxi_data(df: DataFrame, config: dict) -> DataFrame:
     current, count = remove_invalid_trip_duration(current, rules, count)
     current, count = remove_invalid_locations(current, rules, count)
     current, count = remove_invalid_categories(current, rules, count)
+    current, count = remove_unrealistic_speeds(current, count, max_speed_mph=80.0)
 
     final_count = count
     total_removed = initial_count - final_count

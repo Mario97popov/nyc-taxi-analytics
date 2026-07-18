@@ -24,3 +24,29 @@
 2026-06-12 12:05:51,499 - __main__ - INFO -   New features: 19
 2026-06-12 12:05:51,499 - __main__ - INFO - ============================================================
 2026-06-12 12:05:51,985 - py4j.clientserver - INFO - Closing down clientserver connection
+2026-07-18 21:27:29,303 - __main__ - INFO - Starting feature engineering pipeline
+2026-07-18 21:27:32,660 - src.loader - INFO - Loading data from: data/processed/yellow_taxi_clean
+2026-07-18 21:27:35,459 - src.loader - INFO - Loaded with inferred schema
+2026-07-18 21:27:37,089 - __main__ - INFO - Loaded 2,704,064 rows, 19 columns
+2026-07-18 21:27:37,089 - src.transformations - INFO - Starting feature engineering
+2026-07-18 21:27:37,195 - src.transformations - INFO -   ✓ trip_duration_minutes
+2026-07-18 21:27:37,409 - src.transformations - INFO -   ✓ datetime features (year, month, day, hour, day_name)
+2026-07-18 21:27:37,451 - src.transformations - INFO -   ✓ is_weekend
+2026-07-18 21:27:37,504 - src.transformations - INFO -   ✓ time_of_day
+2026-07-18 21:27:37,567 - src.transformations - INFO -   ✓ is_rush_hour
+2026-07-18 21:27:37,619 - src.transformations - INFO -   ✓ speed_mph
+2026-07-18 21:27:37,658 - src.transformations - INFO -   ✓ tip_percentage
+2026-07-18 21:27:37,699 - src.transformations - INFO -   ✓ trip_length_category
+2026-07-18 21:27:37,744 - src.transformations - INFO -   ✓ payment_type_name
+2026-07-18 21:27:37,786 - src.transformations - INFO -   ✓ rate_code_name
+2026-07-18 21:27:37,819 - src.transformations - INFO -   ✓ vendor_name
+2026-07-18 21:27:37,975 - src.transformations - INFO -   ✓ airport flags
+2026-07-18 21:27:37,977 - src.transformations - INFO - Feature engineering complete. Total columns: 38
+2026-07-18 21:27:37,977 - __main__ - INFO - Writing to: data/processed/yellow_taxi_features
+2026-07-18 21:27:53,372 - __main__ - INFO - ============================================================
+2026-07-18 21:27:53,373 - __main__ - INFO - Feature engineering complete:
+2026-07-18 21:27:53,373 - __main__ - INFO -   Rows:    2,704,064 -> 2,704,064
+2026-07-18 21:27:53,373 - __main__ - INFO -   Columns: 19 -> 38
+2026-07-18 21:27:53,373 - __main__ - INFO -   New features: 19
+2026-07-18 21:27:53,373 - __main__ - INFO - ============================================================
+2026-07-18 21:27:53,551 - py4j.clientserver - INFO - Closing down clientserver connection

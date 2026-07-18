@@ -1,0 +1,3 @@
+is_airport_trip,trip_count,avg_distance,avg_duration_min,avg_fare,avg_total,avg_tip_pct
+false,2432536,2.14,12.83,14.19,21.79,21.9
+true,271528,13.67,34.24,56.02,77.25,17.35

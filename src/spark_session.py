@@ -51,7 +51,7 @@ def stop_spark_session(spark: SparkSession) -> None:
         spark.stop()
 
 if __name__ == "__main__":
-    # Ако пуснеш файла директно - прави бърз тест
+    # if you use the file directly it makes a fast test
     spark = get_spark_session("TestSession")
     print(f"✓ Spark version: {spark.version}")
     print(f"✓ App name: {spark.sparkContext.appName}")
