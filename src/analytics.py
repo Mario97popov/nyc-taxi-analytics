@@ -86,9 +86,6 @@ def find_top_routes(df: DataFrame, top_n: int = 20) -> DataFrame:
     """
     logger.info(f"Finding top {top_n} routes...")
 
-    # Window for ranking
-    window = Window.orderBy(desc("trip_count"))
-
     return (df
         .groupBy("PULocationID", "DOLocationID")
         .agg(
@@ -97,11 +94,9 @@ def find_top_routes(df: DataFrame, top_n: int = 20) -> DataFrame:
             spark_round(avg("trip_distance"), 2).alias("avg_distance"),
             spark_round(spark_sum("total_amount"), 2).alias("total_revenue"),
         )
-        .withColumn("rank", row_number().over(window))
-        .filter(col("rank") <= top_n)
-        .orderBy("rank")
+        .orderBy(desc("trip_count"))
+        .limit(top_n)
     )
-
 # ============================================================
 # Section 4: Top pickup zones per hour (window function!)
 # ============================================================
