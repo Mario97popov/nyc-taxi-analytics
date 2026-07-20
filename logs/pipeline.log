@@ -1,0 +1,233 @@
+2026-07-20 21:17:08,567 - __main__ - INFO - ======================================================================
+2026-07-20 21:17:08,567 - __main__ - INFO - NYC TAXI ANALYTICS - FULL PIPELINE
+2026-07-20 21:17:08,567 - __main__ - INFO - ======================================================================
+2026-07-20 21:17:33,076 - __main__ - INFO - 
+2026-07-20 21:17:33,076 - __main__ - INFO - ######################################################################
+2026-07-20 21:17:33,077 - __main__ - INFO - #  STEP: Quality Check (Raw)
+2026-07-20 21:17:33,077 - __main__ - INFO - ######################################################################
+2026-07-20 21:17:33,077 - src.loader - INFO - Found 1 file(s) to load:
+2026-07-20 21:17:33,078 - src.loader - INFO -   - yellow_tripdata_2024-01.parquet (47.6 MB)
+2026-07-20 21:17:38,081 - src.quality - INFO - ============================================================
+2026-07-20 21:17:38,082 - src.quality - INFO - Starting full data quality check
+2026-07-20 21:17:38,082 - src.quality - INFO - ============================================================
+2026-07-20 21:17:48,408 - src.quality - INFO - Checking nulls in all columns...
+2026-07-20 21:17:55,700 - src.quality - INFO - Checking negative values...
+2026-07-20 21:17:56,317 - src.quality - INFO - Checking zero values...
+2026-07-20 21:17:56,795 - src.quality - INFO - Checking outliers...
+2026-07-20 21:17:57,202 - src.quality - INFO - Checking date validity...
+2026-07-20 21:17:57,769 - src.quality - INFO - Checking trip duration...
+2026-07-20 21:17:58,043 - src.quality - INFO - Checking invalid categorical values...
+2026-07-20 21:17:58,420 - src.quality - INFO - Data quality check complete
+2026-07-20 21:17:58,420 - __main__ - INFO - Raw data rows: 2,964,624
+2026-07-20 21:17:58,420 - __main__ - INFO - Quality report saved: data/reports/quality_report_20260720_211758.json
+2026-07-20 21:17:58,421 - __main__ - INFO - ✓ Quality Check (Raw) completed in 25.3s
+2026-07-20 21:17:58,421 - __main__ - INFO - 
+2026-07-20 21:17:58,421 - __main__ - INFO - ######################################################################
+2026-07-20 21:17:58,421 - __main__ - INFO - #  STEP: Data Cleaning
+2026-07-20 21:17:58,421 - __main__ - INFO - ######################################################################
+2026-07-20 21:17:58,421 - src.loader - INFO - Found 1 file(s) to load:
+2026-07-20 21:17:58,422 - src.loader - INFO -   - yellow_tripdata_2024-01.parquet (47.6 MB)
+2026-07-20 21:17:58,453 - src.cleaner - INFO - ============================================================
+2026-07-20 21:17:58,453 - src.cleaner - INFO - Starting data cleaning
+2026-07-20 21:17:58,453 - src.cleaner - INFO - ============================================================
+2026-07-20 21:18:01,914 - src.cleaner - INFO - Initial row count: 2,964,624
+2026-07-20 21:18:01,915 - src.cleaner - INFO - 
+2026-07-20 21:18:02,456 - src.cleaner - INFO -   [remove_nulls] removed 140,162 rows (4.73%) -> 2,824,462 remaining
+2026-07-20 21:18:05,401 - src.cleaner - INFO -   [remove_duplicates] removed 0 rows (0.00%) -> 2,824,462 remaining
+2026-07-20 21:18:08,864 - src.cleaner - INFO -   [remove_invalid_dates] removed 8,186 rows (0.29%) -> 2,816,276 remaining
+2026-07-20 21:18:12,033 - src.cleaner - INFO -   [remove_invalid_distance] removed 46,607 rows (1.65%) -> 2,769,669 remaining
+2026-07-20 21:18:15,188 - src.cleaner - INFO -   [remove_invalid_amounts] removed 29,715 rows (1.07%) -> 2,739,954 remaining
+2026-07-20 21:18:18,262 - src.cleaner - INFO -   [remove_invalid_passengers] removed 30,604 rows (1.12%) -> 2,709,350 remaining
+2026-07-20 21:18:21,512 - src.cleaner - INFO -   [remove_invalid_duration] removed 5,198 rows (0.19%) -> 2,704,152 remaining
+2026-07-20 21:18:24,761 - src.cleaner - INFO -   [remove_invalid_locations] removed 0 rows (0.00%) -> 2,704,152 remaining
+2026-07-20 21:18:28,063 - src.cleaner - INFO -   [remove_invalid_categories] removed 0 rows (0.00%) -> 2,704,152 remaining
+2026-07-20 21:18:31,412 - src.cleaner - INFO -   [remove_unrealistic_speed] removed 88 rows (0.00%) -> 2,704,064 remaining
+2026-07-20 21:18:31,412 - src.cleaner - INFO - 
+2026-07-20 21:18:31,413 - src.cleaner - INFO - ============================================================
+2026-07-20 21:18:31,413 - src.cleaner - INFO - Cleaning summary:
+2026-07-20 21:18:31,413 - src.cleaner - INFO -   Initial:  2,964,624
+2026-07-20 21:18:31,413 - src.cleaner - INFO -   Removed:  260,560 (8.79%)
+2026-07-20 21:18:31,413 - src.cleaner - INFO -   Final:    2,704,064 (91.21% kept)
+2026-07-20 21:18:31,414 - src.cleaner - INFO - ============================================================
+2026-07-20 21:18:31,416 - src.cleaner - INFO - Writing cleaned data to: data/processed/yellow_taxi_clean
+2026-07-20 21:18:38,528 - src.cleaner - INFO - Write complete
+2026-07-20 21:18:38,529 - __main__ - INFO - Clean data saved to: data/processed/yellow_taxi_clean
+2026-07-20 21:18:38,529 - __main__ - INFO - ✓ Data Cleaning completed in 40.1s
+2026-07-20 21:18:38,529 - __main__ - INFO - 
+2026-07-20 21:18:38,529 - __main__ - INFO - ######################################################################
+2026-07-20 21:18:38,529 - __main__ - INFO - #  STEP: Feature Engineering
+2026-07-20 21:18:38,529 - __main__ - INFO - ######################################################################
+2026-07-20 21:18:38,530 - src.loader - INFO - Loading data from: data/processed/yellow_taxi_clean
+2026-07-20 21:18:38,661 - src.loader - INFO - Loaded with inferred schema
+2026-07-20 21:18:38,661 - src.transformations - INFO - Starting feature engineering
+2026-07-20 21:18:38,687 - src.transformations - INFO -   ✓ trip_duration_minutes
+2026-07-20 21:18:38,770 - src.transformations - INFO -   ✓ datetime features (year, month, day, hour, day_name)
+2026-07-20 21:18:38,785 - src.transformations - INFO -   ✓ is_weekend
+2026-07-20 21:18:38,811 - src.transformations - INFO -   ✓ time_of_day
+2026-07-20 21:18:38,835 - src.transformations - INFO -   ✓ is_rush_hour
+2026-07-20 21:18:38,867 - src.transformations - INFO -   ✓ speed_mph
+2026-07-20 21:18:38,904 - src.transformations - INFO -   ✓ tip_percentage
+2026-07-20 21:18:38,924 - src.transformations - INFO -   ✓ trip_length_category
+2026-07-20 21:18:38,960 - src.transformations - INFO -   ✓ payment_type_name
+2026-07-20 21:18:38,996 - src.transformations - INFO -   ✓ rate_code_name
+2026-07-20 21:18:39,019 - src.transformations - INFO -   ✓ vendor_name
+2026-07-20 21:18:39,088 - src.transformations - INFO -   ✓ airport flags
+2026-07-20 21:18:39,090 - src.transformations - INFO - Feature engineering complete. Total columns: 38
+2026-07-20 21:18:49,395 - __main__ - INFO - Features saved to: data/processed/yellow_taxi_features
+2026-07-20 21:18:49,396 - __main__ - INFO - ✓ Feature Engineering completed in 10.9s
+2026-07-20 21:18:49,396 - __main__ - INFO - 
+2026-07-20 21:18:49,396 - __main__ - INFO - ######################################################################
+2026-07-20 21:18:49,396 - __main__ - INFO - #  STEP: Analytics
+2026-07-20 21:18:49,396 - __main__ - INFO - ######################################################################
+2026-07-20 21:18:49,396 - src.loader - INFO - Loading data from: data/processed/yellow_taxi_features
+2026-07-20 21:18:49,569 - src.loader - INFO - Loaded with inferred schema
+2026-07-20 21:18:49,580 - src.analytics - INFO - Analyzing hourly demand...
+2026-07-20 21:18:49,647 - src.analytics - INFO - Analyzing day of week patterns...
+2026-07-20 21:18:49,698 - src.analytics - INFO - Finding top 20 routes...
+2026-07-20 21:18:49,745 - src.analytics - INFO - Finding top 3 pickup zones per hour...
+2026-07-20 21:18:49,812 - src.analytics - INFO - Analyzing payment types...
+2026-07-20 21:18:56,847 - src.analytics - INFO - Analyzing airport trips...
+2026-07-20 21:18:56,889 - src.analytics - INFO - Analyzing revenue patterns...
+2026-07-20 21:18:56,932 - src.analytics - INFO - Analyzing traffic patterns by hour...
+2026-07-20 21:18:57,034 - src.analytics - INFO - Analyzing trip length distribution...
+2026-07-20 21:18:57,161 - __main__ - INFO -   Saving: hourly_demand
+2026-07-20 21:18:58,299 - __main__ - INFO -   Saving: day_of_week
+2026-07-20 21:18:59,093 - __main__ - INFO -   Saving: top_routes
+2026-07-20 21:19:00,148 - __main__ - INFO -   Saving: top_pickup_zones_per_hour
+2026-07-20 21:19:00,943 - __main__ - INFO -   Saving: payment_types
+2026-07-20 21:19:01,692 - __main__ - INFO -   Saving: airport_trips
+2026-07-20 21:19:02,320 - __main__ - INFO -   Saving: revenue_patterns
+2026-07-20 21:19:02,973 - __main__ - INFO -   Saving: traffic_by_hour
+2026-07-20 21:19:08,345 - __main__ - INFO -   Saving: trip_length_distribution
+2026-07-20 21:19:08,949 - __main__ - INFO - All analytics saved to: data/output
+2026-07-20 21:19:08,949 - __main__ - INFO - ✓ Analytics completed in 19.6s
+2026-07-20 21:19:08,949 - __main__ - INFO - 
+2026-07-20 21:19:08,949 - __main__ - INFO - ######################################################################
+2026-07-20 21:19:08,949 - __main__ - INFO - #  STEP: Validate Clean Data
+2026-07-20 21:19:08,949 - __main__ - INFO - ######################################################################
+2026-07-20 21:19:08,949 - src.loader - INFO - Loading data from: data/processed/yellow_taxi_features
+2026-07-20 21:19:09,044 - src.loader - INFO - Loaded with inferred schema
+2026-07-20 21:19:09,044 - src.quality - INFO - ============================================================
+2026-07-20 21:19:09,044 - src.quality - INFO - Starting full data quality check
+2026-07-20 21:19:09,045 - src.quality - INFO - ============================================================
+2026-07-20 21:19:15,449 - src.quality - INFO - Checking nulls in all columns...
+2026-07-20 21:19:30,638 - src.quality - INFO - Checking negative values...
+2026-07-20 21:19:30,930 - src.quality - INFO - Checking zero values...
+2026-07-20 21:19:31,149 - src.quality - INFO - Checking outliers...
+2026-07-20 21:19:31,587 - src.quality - INFO - Checking date validity...
+2026-07-20 21:19:31,869 - src.quality - INFO - Checking trip duration...
+2026-07-20 21:19:32,089 - src.quality - INFO - Checking invalid categorical values...
+2026-07-20 21:19:32,413 - src.quality - INFO - Data quality check complete
+2026-07-20 21:19:32,414 - __main__ - INFO - ✓ Clean data validation PASSED - no issues found
+2026-07-20 21:19:32,414 - __main__ - INFO - ✓ Validate Clean Data completed in 23.5s
+2026-07-20 21:19:32,414 - __main__ - INFO - 
+2026-07-20 21:19:32,414 - __main__ - INFO - ======================================================================
+2026-07-20 21:19:32,414 - __main__ - INFO - PIPELINE COMPLETED SUCCESSFULLY in 143.8s
+2026-07-20 21:19:32,414 - __main__ - INFO - ======================================================================
+2026-07-20 21:19:33,100 - py4j.clientserver - INFO - Closing down clientserver connection
+2026-07-20 21:19:42,052 - __main__ - INFO - ======================================================================
+2026-07-20 21:19:42,052 - __main__ - INFO - NYC TAXI ANALYTICS - FULL PIPELINE
+2026-07-20 21:19:42,052 - __main__ - INFO - ======================================================================
+2026-07-20 21:19:42,057 - __main__ - INFO - 
+2026-07-20 21:19:42,058 - __main__ - INFO - ######################################################################
+2026-07-20 21:19:42,058 - __main__ - INFO - #  STEP: Download Data
+2026-07-20 21:19:42,058 - __main__ - INFO - ######################################################################
+2026-07-20 21:19:43,069 - __main__ - INFO - ✓ Download Data completed in 1.0s
+2026-07-20 21:19:46,938 - __main__ - INFO - 
+2026-07-20 21:19:46,938 - __main__ - INFO - ######################################################################
+2026-07-20 21:19:46,938 - __main__ - INFO - #  STEP: Quality Check (Raw)
+2026-07-20 21:19:46,939 - __main__ - INFO - ######################################################################
+2026-07-20 21:19:46,939 - src.loader - INFO - Found 1 file(s) to load:
+2026-07-20 21:19:46,939 - src.loader - INFO -   - yellow_tripdata_2024-01.parquet (47.6 MB)
+2026-07-20 21:19:48,479 - src.quality - INFO - ============================================================
+2026-07-20 21:19:48,479 - src.quality - INFO - Starting full data quality check
+2026-07-20 21:19:48,479 - src.quality - INFO - ============================================================
+2026-07-20 21:19:56,974 - src.quality - INFO - Checking nulls in all columns...
+2026-07-20 21:20:04,450 - src.quality - INFO - Checking negative values...
+2026-07-20 21:20:05,059 - src.quality - INFO - Checking zero values...
+2026-07-20 21:20:05,560 - src.quality - INFO - Checking outliers...
+2026-07-20 21:20:06,009 - src.quality - INFO - Checking date validity...
+2026-07-20 21:20:06,577 - src.quality - INFO - Checking trip duration...
+2026-07-20 21:20:06,935 - src.quality - INFO - Checking invalid categorical values...
+2026-07-20 21:20:07,331 - src.quality - INFO - Data quality check complete
+2026-07-20 21:20:07,331 - __main__ - INFO - Raw data rows: 2,964,624
+2026-07-20 21:20:07,332 - __main__ - INFO - Quality report saved: data/reports/quality_report_20260720_212007.json
+2026-07-20 21:20:07,333 - __main__ - INFO - ✓ Quality Check (Raw) completed in 20.4s
+2026-07-20 21:20:07,333 - __main__ - INFO - 
+2026-07-20 21:20:07,333 - __main__ - INFO - ######################################################################
+2026-07-20 21:20:07,333 - __main__ - INFO - #  STEP: Data Cleaning
+2026-07-20 21:20:07,334 - __main__ - INFO - ######################################################################
+2026-07-20 21:20:07,334 - src.loader - INFO - Found 1 file(s) to load:
+2026-07-20 21:20:07,334 - src.loader - INFO -   - yellow_tripdata_2024-01.parquet (47.6 MB)
+2026-07-20 21:20:07,360 - src.cleaner - INFO - ============================================================
+2026-07-20 21:20:07,360 - src.cleaner - INFO - Starting data cleaning
+2026-07-20 21:20:07,360 - src.cleaner - INFO - ============================================================
+2026-07-20 21:20:11,513 - src.cleaner - INFO - Initial row count: 2,964,624
+2026-07-20 21:20:11,513 - src.cleaner - INFO - 
+2026-07-20 21:20:11,990 - src.cleaner - INFO -   [remove_nulls] removed 140,162 rows (4.73%) -> 2,824,462 remaining
+2026-07-20 21:20:17,819 - src.cleaner - INFO -   [remove_duplicates] removed 0 rows (0.00%) -> 2,824,462 remaining
+2026-07-20 21:20:22,013 - src.cleaner - INFO -   [remove_invalid_dates] removed 8,186 rows (0.29%) -> 2,816,276 remaining
+2026-07-20 21:20:25,293 - src.cleaner - INFO -   [remove_invalid_distance] removed 46,607 rows (1.65%) -> 2,769,669 remaining
+2026-07-20 21:20:28,812 - src.cleaner - INFO -   [remove_invalid_amounts] removed 29,715 rows (1.07%) -> 2,739,954 remaining
+2026-07-20 21:20:33,333 - src.cleaner - INFO -   [remove_invalid_passengers] removed 30,604 rows (1.12%) -> 2,709,350 remaining
+2026-07-20 21:20:37,497 - src.cleaner - INFO -   [remove_invalid_duration] removed 5,198 rows (0.19%) -> 2,704,152 remaining
+2026-07-20 21:20:41,569 - src.cleaner - INFO -   [remove_invalid_locations] removed 0 rows (0.00%) -> 2,704,152 remaining
+2026-07-20 21:20:44,878 - src.cleaner - INFO -   [remove_invalid_categories] removed 0 rows (0.00%) -> 2,704,152 remaining
+2026-07-20 21:20:48,320 - src.cleaner - INFO -   [remove_unrealistic_speed] removed 88 rows (0.00%) -> 2,704,064 remaining
+2026-07-20 21:20:48,320 - src.cleaner - INFO - 
+2026-07-20 21:20:48,320 - src.cleaner - INFO - ============================================================
+2026-07-20 21:20:48,320 - src.cleaner - INFO - Cleaning summary:
+2026-07-20 21:20:48,321 - src.cleaner - INFO -   Initial:  2,964,624
+2026-07-20 21:20:48,321 - src.cleaner - INFO -   Removed:  260,560 (8.79%)
+2026-07-20 21:20:48,321 - src.cleaner - INFO -   Final:    2,704,064 (91.21% kept)
+2026-07-20 21:20:48,321 - src.cleaner - INFO - ============================================================
+2026-07-20 21:20:48,323 - src.cleaner - INFO - Writing cleaned data to: data/processed/yellow_taxi_clean
+2026-07-20 21:20:55,700 - src.cleaner - INFO - Write complete
+2026-07-20 21:20:55,700 - __main__ - INFO - Clean data saved to: data/processed/yellow_taxi_clean
+2026-07-20 21:20:55,701 - __main__ - INFO - ✓ Data Cleaning completed in 48.4s
+2026-07-20 21:20:55,701 - __main__ - INFO - 
+2026-07-20 21:20:55,701 - __main__ - INFO - ######################################################################
+2026-07-20 21:20:55,701 - __main__ - INFO - #  STEP: Feature Engineering
+2026-07-20 21:20:55,702 - __main__ - INFO - ######################################################################
+2026-07-20 21:20:55,702 - src.loader - INFO - Loading data from: data/processed/yellow_taxi_clean
+2026-07-20 21:20:55,820 - src.loader - INFO - Loaded with inferred schema
+2026-07-20 21:20:55,820 - src.transformations - INFO - Starting feature engineering
+2026-07-20 21:20:55,847 - src.transformations - INFO -   ✓ trip_duration_minutes
+2026-07-20 21:20:55,924 - src.transformations - INFO -   ✓ datetime features (year, month, day, hour, day_name)
+2026-07-20 21:20:55,941 - src.transformations - INFO -   ✓ is_weekend
+2026-07-20 21:20:55,973 - src.transformations - INFO -   ✓ time_of_day
+2026-07-20 21:20:55,997 - src.transformations - INFO -   ✓ is_rush_hour
+2026-07-20 21:20:56,024 - src.transformations - INFO -   ✓ speed_mph
+2026-07-20 21:20:56,055 - src.transformations - INFO -   ✓ tip_percentage
+2026-07-20 21:20:56,076 - src.transformations - INFO -   ✓ trip_length_category
+2026-07-20 21:20:56,108 - src.transformations - INFO -   ✓ payment_type_name
+2026-07-20 21:20:56,142 - src.transformations - INFO -   ✓ rate_code_name
+2026-07-20 21:20:56,170 - src.transformations - INFO -   ✓ vendor_name
+2026-07-20 21:20:56,244 - src.transformations - INFO -   ✓ airport flags
+2026-07-20 21:20:56,247 - src.transformations - INFO - Feature engineering complete. Total columns: 38
+2026-07-20 21:21:06,918 - __main__ - INFO - Features saved to: data/processed/yellow_taxi_features
+2026-07-20 21:21:06,918 - __main__ - INFO - ✓ Feature Engineering completed in 11.2s
+2026-07-20 21:21:06,918 - __main__ - INFO - 
+2026-07-20 21:21:06,919 - __main__ - INFO - ######################################################################
+2026-07-20 21:21:06,919 - __main__ - INFO - #  STEP: Validate Clean Data
+2026-07-20 21:21:06,919 - __main__ - INFO - ######################################################################
+2026-07-20 21:21:06,919 - src.loader - INFO - Loading data from: data/processed/yellow_taxi_features
+2026-07-20 21:21:07,051 - src.loader - INFO - Loaded with inferred schema
+2026-07-20 21:21:07,051 - src.quality - INFO - ============================================================
+2026-07-20 21:21:07,051 - src.quality - INFO - Starting full data quality check
+2026-07-20 21:21:07,051 - src.quality - INFO - ============================================================
+2026-07-20 21:21:14,510 - src.quality - INFO - Checking nulls in all columns...
+2026-07-20 21:21:21,994 - src.quality - INFO - Checking negative values...
+2026-07-20 21:21:22,383 - src.quality - INFO - Checking zero values...
+2026-07-20 21:21:22,689 - src.quality - INFO - Checking outliers...
+2026-07-20 21:21:22,895 - src.quality - INFO - Checking date validity...
+2026-07-20 21:21:23,211 - src.quality - INFO - Checking trip duration...
+2026-07-20 21:21:23,417 - src.quality - INFO - Checking invalid categorical values...
+2026-07-20 21:21:23,831 - src.quality - INFO - Data quality check complete
+2026-07-20 21:21:23,832 - __main__ - INFO - ✓ Clean data validation PASSED - no issues found
+2026-07-20 21:21:23,832 - __main__ - INFO - ✓ Validate Clean Data completed in 16.9s
+2026-07-20 21:21:23,832 - __main__ - INFO - 
+2026-07-20 21:21:23,832 - __main__ - INFO - ======================================================================
+2026-07-20 21:21:23,832 - __main__ - INFO - PIPELINE COMPLETED SUCCESSFULLY in 101.8s
+2026-07-20 21:21:23,832 - __main__ - INFO - ======================================================================
+2026-07-20 21:21:28,954 - py4j.clientserver - INFO - Closing down clientserver connection
