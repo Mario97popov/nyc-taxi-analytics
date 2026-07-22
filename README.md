@@ -44,7 +44,7 @@ Raw Parquet → Quality Check → Cleaning → Feature Engineering → Analytics
 
 ## Project Structure
 
-\`\`\`
+```
 nyc-taxi-analytics/
 ├── config/
 │   └── config.yaml              # Cleaning rules & Spark settings
@@ -73,7 +73,7 @@ nyc-taxi-analytics/
 │   ├── conftest.py              # Pytest fixtures
 │   └── test_transformations.py
 └── requirements.txt
-\`\`\`
+```
 
 ## Setup
 
