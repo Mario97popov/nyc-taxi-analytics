@@ -1,7 +1,7 @@
 # NYC Yellow Taxi Analytics Pipeline
 
 Production-grade PySpark data pipeline for analyzing NYC Yellow Taxi trips.
-Demonstrates end-to-end data engineering workflow — from raw data to business insights.
+Demonstrates end-to-end data engineering workflow from raw data to business insights.
 
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![PySpark](https://img.shields.io/badge/PySpark-3.5.1-orange.svg)
